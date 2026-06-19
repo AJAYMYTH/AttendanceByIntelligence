@@ -1,0 +1,107 @@
+version: "2"
+type: frontend
+tech_stack:
+  - JavaScript
+  - Express
+  - Supabase
+  - SimpleWebAuthn
+  - Vanilla CSS
+  - HTML5
+routes:
+  - path: /
+    file: public/index.html
+    auth_required: false
+    description: Main entry point containing login and dashboard
+  - path: /api/auth/login
+    file: src/routes/authRoutes.js
+    auth_required: false
+    description: User login endpoint
+  - path: /api/auth/passkey/login/options
+    file: src/routes/passkeyRoutes.js
+    auth_required: false
+    description: WebAuthn login options
+  - path: /api/auth/passkey/login/verify
+    file: src/routes/passkeyRoutes.js
+    auth_required: false
+    description: WebAuthn login verification
+features:
+  - name: User Authentication
+    description: Login with credentials and UID, with optional Passkey verification.
+    files:
+      - public/app.js
+      - src/controllers/authController.js
+      - src/controllers/passkeyController.js
+    entry_route: /
+    user_interactions:
+      - Fill username input
+      - Fill password input
+      - Fill UID input
+      - Click Login button
+      - If required, click 'Use Passkey' to verify
+    api_calls:
+      - method: POST
+        endpoint: /api/auth/login
+      - method: POST
+        endpoint: /api/auth/passkey/login/options
+      - method: POST
+        endpoint: /api/auth/passkey/login/verify
+    auth_required: false
+  - name: Attendance Tracking
+    description: Mark attendance for students in specific sections.
+    files:
+      - public/app.js
+      - src/controllers/attendanceController.js
+    entry_route: /
+    user_interactions:
+      - Select Target Section from dropdown
+      - Search/Filter students
+      - Toggle PRESENT/ABSENT for students
+      - Click Confirm Attendance button
+      - Confirm WhatsApp sharing if absentees exist
+    api_calls:
+      - method: GET
+        endpoint: /api/students
+      - method: POST
+        endpoint: /api/attendance
+    auth_required: true
+  - name: Student Management
+    description: Add, import, and delete student records.
+    files:
+      - public/app.js
+      - src/controllers/studentController.js
+    entry_route: /
+    user_interactions:
+      - Fill Manual Enrollment form
+      - Click Register Student
+      - Select file for Bulk Import
+      - Click Execute Import
+      - Browse Registry and click Remove Record
+    api_calls:
+      - method: POST
+        endpoint: /api/students/manual
+      - method: POST
+        endpoint: /api/students/upload
+      - method: DELETE
+        endpoint: /api/students/:id
+    auth_required: true
+  - name: Analytics Reports
+    description: View and export attendance analytics.
+    files:
+      - public/app.js
+      - src/controllers/attendanceController.js
+    entry_route: /
+    user_interactions:
+      - Toggle Class/Individual report
+      - Select Section and Date Range
+      - Click Generate Insights
+      - Click Download/Export buttons
+    api_calls:
+      - method: GET
+        endpoint: /api/attendance/analytics
+      - method: GET
+        endpoint: /api/attendance/export-openpyxl
+    auth_required: true
+known_limitations:
+  - issue: Database connection depends on internet access for Supabase.
+    location: server.js
+    impact: ENOTFOUND errors if offline.

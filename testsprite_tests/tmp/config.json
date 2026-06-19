@@ -1,0 +1,17 @@
+{
+  "status": "commited",
+  "type": "frontend",
+  "scope": "codebase",
+  "localEndpoint": "http://localhost:5000",
+  "executionArgs": {
+    "projectName": "Attendance By Intelligence",
+    "projectPath": "c:\\Users\\javal\\Videos\\Attendance By Intelligence",
+    "testIds": [],
+    "additionalInstruction": "Please test the following:\n1. Login with username 'staff.gttc.s1', password 'staff@gttc.edu', and UID 'G2TC-AS-6354-S'.\n2. Once logged in, go to the 'Attendance' tab.\n3. Select a section (e.g., '2nd Year DAIML').\n4. Mark some students as PRESENT and others as ABSENT.\n5. Search for a student to verify the filter works.\n6. Submit attendance.\n7. Go to the 'Students' tab and verify the student list loads for a section.\n8. Go to the 'Analytics' tab and generate a report for a date range.\n9. Verify that 'Logout' works correctly.\nNote: Passkey verification is NOT required for this user.",
+    "serverMode": "production",
+    "envs": {
+      "API_KEY": "sk-user-WtuxQdYu1Azens1C9M8I0fcO15j8SwbeQio9RgBDnpxqRRlP-KxQAdwDUQA0mWvpOntrMZ5kv0tw1Sg1eP1joIxhthuk1P9ErilRKzePoUFlc7Vy8z0jaILsEQpXQDGI8QA"
+    }
+  },
+  "serverPort": 60087
+}

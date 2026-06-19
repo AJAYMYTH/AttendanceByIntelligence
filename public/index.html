@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/>
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="theme-color" content="#ffffff" id="theme-color-meta">
+  <link rel="manifest" href="manifest.json">
+  <title>ABI | Attendance By Intelligence</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <button id="theme-toggle" class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode">
+    <span class="material-symbols-rounded" id="theme-icon">dark_mode</span>
+  </button>
+
+  <div id="toast-container"></div>
+
+  <div id="modal-overlay">
+    <div class="modal-box" id="modal-box">
+      <div class="modal-title" id="modal-title"></div>
+      <div class="modal-desc" id="modal-desc"></div>
+      <div id="modal-body"></div>
+      <div class="modal-actions" id="modal-actions"></div>
+    </div>
+  </div>
+
+  <div id="login-page" class="page active">
+    <div class="login-container">
+      <header class="login-header">
+        <h1>ABI</h1>
+        <p>Attendance By Intelligence</p>
+      </header>
+      <form id="login-form">
+        <div class="form-group">
+          <label for="uid">University ID</label>
+          <input id="uid" required placeholder="G2TC-AS-XXXX-S" type="text" autocomplete="username"/>
+        </div>
+        <div class="form-group">
+          <label for="username">Username</label>
+          <input id="username" required placeholder="j.smith" type="text" autocomplete="username"/>
+        </div>
+        <div class="form-group">
+          <label for="password">Security Key</label>
+          <input id="password" required placeholder="&#8226;&#8226;&#8226;&#8226;&#8226;&#8226;&#8226;&#8226;" type="password" autocomplete="current-password"/>
+        </div>
+        <button id="login-submit-btn" type="submit" class="btn-full">
+          Sign In <span class="material-symbols-rounded">arrow_forward</span>
+        </button>
+        <div id="login-error" class="error-msg" style="display: none;"></div>
+      </form>
+      <div id="passkey-verify-section" style="display: none;">
+        <div class="login-header" style="margin-bottom: 24px;">
+          <span class="material-symbols-rounded" style="font-size: 48px;">fingerprint</span>
+          <h3 style="margin-top: 12px;">Verify Identity</h3>
+          <p id="passkey-username-display" style="font-weight: 700; margin-top: 8px; color: var(--text-main);"></p>
+        </div>
+        <button id="passkey-auth-btn" class="btn-full" style="margin-bottom: 12px;">
+          Authenticate with Passkey
+        </button>
+        <button id="passkey-cancel-btn" class="btn-secondary btn-full">
+          Back to Login
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div id="dashboard" class="page">
+    <div class="dashboard-overlay"></div>
+    <aside>
+      <div class="logo-section">
+        <span class="material-symbols-rounded">analytics</span>
+        <span>ABI</span>
+      </div>
+      <nav class="nav-links">
+        <div class="sidebar-link active" onclick="showTab('attendance')" tabindex="0" role="button" aria-label="Attendance">
+          <span class="material-symbols-rounded">calendar_today</span>
+          <span>Attendance</span>
+        </div>
+        <div class="sidebar-link" onclick="showTab('students')" tabindex="0" role="button" aria-label="Students">
+          <span class="material-symbols-rounded">group</span>
+          <span>Students</span>
+        </div>
+        <div class="sidebar-link" onclick="showTab('analytics')" tabindex="0" role="button" aria-label="Analytics">
+          <span class="material-symbols-rounded">insights</span>
+          <span>Analytics</span>
+        </div>
+        <div id="nav-admin" class="sidebar-link" onclick="showTab('admin')" style="display: none;" tabindex="0" role="button" aria-label="Admin">
+          <span class="material-symbols-rounded">admin_panel_settings</span>
+          <span>Admin</span>
+        </div>
+      </nav>
+      <div class="sidebar-link logout-link" onclick="handleLogout()" tabindex="0" role="button" aria-label="Sign Out">
+        <span class="material-symbols-rounded">logout</span>
+        <span>Sign Out</span>
+      </div>
+    </aside>
+
+    <main>
+      <div id="tab-content"></div>
+    </main>
+
+    <nav id="mobile-nav" class="mobile-nav">
+      <div class="mobile-nav-link active" onclick="showTab('attendance')" tabindex="0" role="button" aria-label="Attendance">
+        <span class="material-symbols-rounded">calendar_today</span>
+        <span>Attendance</span>
+      </div>
+      <div class="mobile-nav-link" onclick="showTab('students')" tabindex="0" role="button" aria-label="Students">
+        <span class="material-symbols-rounded">group</span>
+        <span>Registry</span>
+      </div>
+      <div class="mobile-nav-link" onclick="showTab('analytics')" tabindex="0" role="button" aria-label="Analytics">
+        <span class="material-symbols-rounded">insights</span>
+        <span>Analytics</span>
+      </div>
+      <div id="mobile-nav-admin" class="mobile-nav-link" onclick="showTab('admin')" style="display: none;" tabindex="0" role="button" aria-label="Admin">
+        <span class="material-symbols-rounded">admin_panel_settings</span>
+        <span>Admin</span>
+      </div>
+    </nav>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://unpkg.com/@simplewebauthn/browser/dist/bundle/index.umd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

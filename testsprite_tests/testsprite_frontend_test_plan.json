@@ -1,0 +1,914 @@
+[
+  {
+    "id": "TC001",
+    "title": "Sign in and reach the dashboard",
+    "description": "This verifies an authorized user can log in with credentials and UID and land on the dashboard.",
+    "category": "User Authentication",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the username field with {{LOGIN_USER}}"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the password field with {{LOGIN_PASSWORD}}"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the UID field with a valid UID"
+      },
+      {
+        "type": "action",
+        "description": "Submit the login form"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the dashboard is displayed"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC002",
+    "title": "Sign in with passkey verification",
+    "description": "This verifies an authorized user can choose passkey verification after credential login and still reach the dashboard.",
+    "category": "User Authentication",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the username field with {{LOGIN_USER}}"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the password field with {{LOGIN_PASSWORD}}"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the UID field with a valid UID"
+      },
+      {
+        "type": "action",
+        "description": "Submit the login form"
+      },
+      {
+        "type": "action",
+        "description": "Choose to verify with passkey when prompted"
+      },
+      {
+        "type": "action",
+        "description": "Complete passkey verification"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the dashboard is displayed"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC003",
+    "title": "Record attendance for a section",
+    "description": "This verifies a staff user can select a section, mark students, confirm submission, and save an attendance record.",
+    "category": "Attendance Tracking",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the username field with {{LOGIN_USER}}"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the password field with {{LOGIN_PASSWORD}}"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the UID field with a valid UID"
+      },
+      {
+        "type": "action",
+        "description": "Submit the login form"
+      },
+      {
+        "type": "action",
+        "description": "Select a target section"
+      },
+      {
+        "type": "action",
+        "description": "Search or filter the student list"
+      },
+      {
+        "type": "action",
+        "description": "Mark at least one student as present or absent"
+      },
+      {
+        "type": "action",
+        "description": "Confirm attendance submission"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the attendance record is saved"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC004",
+    "title": "Generate a class attendance report",
+    "description": "This verifies an authenticated user can select a section and date range, generate class attendance analytics, and view the report output.",
+    "category": "Attendance Analytics",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the username field with {{LOGIN_USER}}"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the password field with {{LOGIN_PASSWORD}}"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the UID field with a valid UID"
+      },
+      {
+        "type": "action",
+        "description": "Submit the login form"
+      },
+      {
+        "type": "action",
+        "description": "Select a section for reporting"
+      },
+      {
+        "type": "action",
+        "description": "Select a valid date range"
+      },
+      {
+        "type": "action",
+        "description": "Switch to the class report view"
+      },
+      {
+        "type": "action",
+        "description": "Generate the attendance report"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify attendance analytics are displayed"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC005",
+    "title": "Register a student manually",
+    "description": "This verifies an authenticated user can manually enroll a student and see the new record added to the registry.",
+    "category": "Student Management",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the username field with {{LOGIN_USER}}"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the password field with {{LOGIN_PASSWORD}}"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the UID field with a valid UID"
+      },
+      {
+        "type": "action",
+        "description": "Submit the login form"
+      },
+      {
+        "type": "action",
+        "description": "Open manual enrollment"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the student details form"
+      },
+      {
+        "type": "action",
+        "description": "Register the student"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the new student is added to the registry"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC006",
+    "title": "View class attendance analytics after selecting filters",
+    "description": "This verifies that an authenticated user can switch to the class report view, choose a section and date range, generate insights, and see analytics displayed on screen.",
+    "category": "Analytics Reports",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the username field with {{LOGIN_USER}}"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the password field with {{LOGIN_PASSWORD}}"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the UID field with a valid UID"
+      },
+      {
+        "type": "action",
+        "description": "Submit the login form"
+      },
+      {
+        "type": "action",
+        "description": "Switch to the class report view"
+      },
+      {
+        "type": "action",
+        "description": "Select a section"
+      },
+      {
+        "type": "action",
+        "description": "Select a valid date range"
+      },
+      {
+        "type": "action",
+        "description": "Generate insights"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify attendance analytics are displayed for the selected class view"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC007",
+    "title": "Generate an individual attendance report",
+    "description": "This verifies an authenticated user can switch to an individual report view, select a section and date range, and see individual attendance analytics.",
+    "category": "Attendance Analytics",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the username field with {{LOGIN_USER}}"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the password field with {{LOGIN_PASSWORD}}"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the UID field with a valid UID"
+      },
+      {
+        "type": "action",
+        "description": "Submit the login form"
+      },
+      {
+        "type": "action",
+        "description": "Select a section for reporting"
+      },
+      {
+        "type": "action",
+        "description": "Select a valid date range"
+      },
+      {
+        "type": "action",
+        "description": "Switch to the individual report view"
+      },
+      {
+        "type": "action",
+        "description": "Generate the attendance report"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify individual attendance analytics are displayed"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC008",
+    "title": "Import students in bulk",
+    "description": "This verifies an authenticated user can import student records in bulk and see the imported records added to the registry.",
+    "category": "Student Management",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the username field with {{LOGIN_USER}}"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the password field with {{LOGIN_PASSWORD}}"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the UID field with a valid UID"
+      },
+      {
+        "type": "action",
+        "description": "Submit the login form"
+      },
+      {
+        "type": "action",
+        "description": "Open bulk import"
+      },
+      {
+        "type": "action",
+        "description": "Select a valid import file"
+      },
+      {
+        "type": "action",
+        "description": "Execute the import"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the imported student records are added to the registry"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC009",
+    "title": "Export an attendance report",
+    "description": "This verifies an authenticated user can generate attendance analytics and export the report file from the reporting view.",
+    "category": "Attendance Analytics",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the username field with {{LOGIN_USER}}"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the password field with {{LOGIN_PASSWORD}}"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the UID field with a valid UID"
+      },
+      {
+        "type": "action",
+        "description": "Submit the login form"
+      },
+      {
+        "type": "action",
+        "description": "Select a section for reporting"
+      },
+      {
+        "type": "action",
+        "description": "Select a valid date range"
+      },
+      {
+        "type": "action",
+        "description": "Generate the attendance report"
+      },
+      {
+        "type": "action",
+        "description": "Export the report"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the report export is available"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC010",
+    "title": "Remove a student from the registry",
+    "description": "This verifies an authenticated user can delete an existing student record and no longer see it in the registry.",
+    "category": "Student Management",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the username field with {{LOGIN_USER}}"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the password field with {{LOGIN_PASSWORD}}"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the UID field with a valid UID"
+      },
+      {
+        "type": "action",
+        "description": "Submit the login form"
+      },
+      {
+        "type": "action",
+        "description": "Browse the student registry"
+      },
+      {
+        "type": "action",
+        "description": "Remove a student record"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the student record is no longer available in the registry"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC011",
+    "title": "Download an attendance analytics report",
+    "description": "This verifies that an authenticated user can select a section and date range and download the generated attendance report file.",
+    "category": "Analytics Reports",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the username field with {{LOGIN_USER}}"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the password field with {{LOGIN_PASSWORD}}"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the UID field with a valid UID"
+      },
+      {
+        "type": "action",
+        "description": "Submit the login form"
+      },
+      {
+        "type": "action",
+        "description": "Select a section"
+      },
+      {
+        "type": "action",
+        "description": "Select a valid date range"
+      },
+      {
+        "type": "action",
+        "description": "Download the attendance report"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the exported attendance file is available"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC012",
+    "title": "Export an attendance analytics report from the generated view",
+    "description": "This verifies that an authenticated user can generate attendance insights and export the report from the results view.",
+    "category": "Analytics Reports",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the username field with {{LOGIN_USER}}"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the password field with {{LOGIN_PASSWORD}}"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the UID field with a valid UID"
+      },
+      {
+        "type": "action",
+        "description": "Submit the login form"
+      },
+      {
+        "type": "action",
+        "description": "Select a section"
+      },
+      {
+        "type": "action",
+        "description": "Select a valid date range"
+      },
+      {
+        "type": "action",
+        "description": "Generate insights"
+      },
+      {
+        "type": "action",
+        "description": "Export the attendance report"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the exported attendance file is available"
+      }
+    ],
+    "priority": "Medium"
+  },
+  {
+    "id": "TC013",
+    "title": "Share absentee attendance from the attendance flow",
+    "description": "This verifies a staff user can mark absentees, confirm attendance, and proceed through the absentee sharing confirmation flow.",
+    "category": "Attendance Tracking",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the username field with {{LOGIN_USER}}"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the password field with {{LOGIN_PASSWORD}}"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the UID field with a valid UID"
+      },
+      {
+        "type": "action",
+        "description": "Submit the login form"
+      },
+      {
+        "type": "action",
+        "description": "Select a target section"
+      },
+      {
+        "type": "action",
+        "description": "Search or filter the student list"
+      },
+      {
+        "type": "action",
+        "description": "Mark at least one student as absent"
+      },
+      {
+        "type": "action",
+        "description": "Confirm attendance submission"
+      },
+      {
+        "type": "action",
+        "description": "Confirm WhatsApp sharing for absentees"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the absentee list is prepared for sharing"
+      }
+    ],
+    "priority": "Medium"
+  },
+  {
+    "id": "TC014",
+    "title": "Change report view and regenerate analytics",
+    "description": "This verifies that an authenticated user can switch between class and individual report views and regenerate analytics for the selected filters.",
+    "category": "Analytics Reports",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the username field with {{LOGIN_USER}}"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the password field with {{LOGIN_PASSWORD}}"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the UID field with a valid UID"
+      },
+      {
+        "type": "action",
+        "description": "Submit the login form"
+      },
+      {
+        "type": "action",
+        "description": "Switch to the class report view"
+      },
+      {
+        "type": "action",
+        "description": "Select a section"
+      },
+      {
+        "type": "action",
+        "description": "Select a valid date range"
+      },
+      {
+        "type": "action",
+        "description": "Generate insights"
+      },
+      {
+        "type": "action",
+        "description": "Switch to the individual report view"
+      },
+      {
+        "type": "action",
+        "description": "Generate insights"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify attendance analytics are displayed in the newly selected report view"
+      }
+    ],
+    "priority": "Medium"
+  },
+  {
+    "id": "TC015",
+    "title": "Search students while marking attendance",
+    "description": "This verifies a user can narrow the student list with search or filters before marking attendance in a section.",
+    "category": "Attendance Tracking",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the username field with {{LOGIN_USER}}"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the password field with {{LOGIN_PASSWORD}}"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the UID field with a valid UID"
+      },
+      {
+        "type": "action",
+        "description": "Submit the login form"
+      },
+      {
+        "type": "action",
+        "description": "Select a target section"
+      },
+      {
+        "type": "action",
+        "description": "Search or filter the student list"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the student list is filtered"
+      }
+    ],
+    "priority": "Medium"
+  },
+  {
+    "id": "TC016",
+    "title": "Update analytics filters before generating insights",
+    "description": "This verifies that an authenticated user can change the section and date range before generating a report and see the updated analytics result.",
+    "category": "Analytics Reports",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the username field with {{LOGIN_USER}}"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the password field with {{LOGIN_PASSWORD}}"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the UID field with a valid UID"
+      },
+      {
+        "type": "action",
+        "description": "Submit the login form"
+      },
+      {
+        "type": "action",
+        "description": "Select a section"
+      },
+      {
+        "type": "action",
+        "description": "Select an initial valid date range"
+      },
+      {
+        "type": "action",
+        "description": "Generate insights"
+      },
+      {
+        "type": "action",
+        "description": "Select a different valid date range"
+      },
+      {
+        "type": "action",
+        "description": "Generate insights"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the analytics reflect the updated filter selection"
+      }
+    ],
+    "priority": "Medium"
+  },
+  {
+    "id": "TC017",
+    "title": "Handle invalid login credentials",
+    "description": "This verifies the login form rejects invalid credentials and shows a validation failure instead of signing in.",
+    "category": "User Authentication",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the username field with an invalid username"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the password field with an invalid password"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the UID field with an invalid UID"
+      },
+      {
+        "type": "action",
+        "description": "Submit the login form"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify a login validation error is visible"
+      }
+    ],
+    "priority": "Low"
+  },
+  {
+    "id": "TC018",
+    "title": "Handle an empty analytics result state",
+    "description": "This verifies that an authenticated user sees an empty or no-data state when generating analytics for a valid section and date range with no attendance records.",
+    "category": "Analytics Reports",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the username field with {{LOGIN_USER}}"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the password field with {{LOGIN_PASSWORD}}"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the UID field with a valid UID"
+      },
+      {
+        "type": "action",
+        "description": "Submit the login form"
+      },
+      {
+        "type": "action",
+        "description": "Select a section"
+      },
+      {
+        "type": "action",
+        "description": "Select a valid date range"
+      },
+      {
+        "type": "action",
+        "description": "Generate insights"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify an empty state message is visible"
+      }
+    ],
+    "priority": "Low"
+  },
+  {
+    "id": "TC019",
+    "title": "Handle an empty manual enrollment submission",
+    "description": "This verifies the manual enrollment form prevents submission when required student details are missing.",
+    "category": "Student Management",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the username field with {{LOGIN_USER}}"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the password field with {{LOGIN_PASSWORD}}"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the UID field with a valid UID"
+      },
+      {
+        "type": "action",
+        "description": "Submit the login form"
+      },
+      {
+        "type": "action",
+        "description": "Open manual enrollment"
+      },
+      {
+        "type": "action",
+        "description": "Submit the student registration form without entering required details"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify a student detail validation error is visible"
+      }
+    ],
+    "priority": "Low"
+  },
+  {
+    "id": "TC020",
+    "title": "Handle an invalid bulk import file",
+    "description": "This verifies the bulk import flow rejects an invalid or empty file selection and shows an import validation error.",
+    "category": "Student Management",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the username field with {{LOGIN_USER}}"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the password field with {{LOGIN_PASSWORD}}"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the UID field with a valid UID"
+      },
+      {
+        "type": "action",
+        "description": "Submit the login form"
+      },
+      {
+        "type": "action",
+        "description": "Open bulk import"
+      },
+      {
+        "type": "action",
+        "description": "Select an invalid import file"
+      },
+      {
+        "type": "action",
+        "description": "Execute the import"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify an import validation error is visible"
+      }
+    ],
+    "priority": "Low"
+  }
+]
